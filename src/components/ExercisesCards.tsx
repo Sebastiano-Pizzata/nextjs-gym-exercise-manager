@@ -10,7 +10,7 @@ export default function ExercisesCards() {
     }, []);
 
     return (
-        <div className="container mx-auto flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 ">
             {exercises.map((e) => (
                 <div
                     key={e.name}

@@ -17,46 +17,57 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <GlobalProvider>
-          <nav className="bg-[#64E657] text-gray-900 sticky top-0 z-50 rounded-2xl w-[90%] mx-auto my-4 px-6 py-3 shadow-lg shadow-green-300/30 backdrop-blur-md transition-all duration-300">
-            <div className="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-4">
+          {/* Wrapper principale */}
+          <div className="relative min-h-screen w-full overflow-hidden">
+            {/* Sfondo immagine nitida */}
+            <img
+              src="/bg-palestra-2.jpg"
+              alt="Sfondo palestra"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
 
-              {/* Logo */}
-              <div className="text-2xl font-bold tracking-wide cursor-pointer flex items-center gap-2">
-                <span className="px-3 py-1 bg-white/30 rounded-xl backdrop-blur-sm">
-                  🏋️
-                </span>
-                <span className="drop-shadow">Gym Scheduler</span>
-              </div>
+            {/* Overlay leggero per leggibilità */}
+            <div className="absolute inset-0 bg-black/50"></div>
 
-              {/* Searchbar */}
-              <div className="w-full max-w-md order-3 md:order-none">
-                <div className="flex items-center bg-white border border-gray-200 rounded-full shadow-md focus-within:ring-2 focus-within:ring-green-400 transition">
-                  <input
-                    type="text"
-                    placeholder="Cerca esercizi..."
-                    className="flex-1 px-4 py-2 text-gray-700 bg-transparent outline-none text-sm"
-                  />
+            {/* Contenuto principale */}
+            <div className="relative z-10">
+              <nav className="bg-[#64E657]/80 text-gray-900 rounded-2xl w-[90%] mx-auto my-4 px-6 py-3 shadow-lg shadow-green-300/30 transition-all duration-300">
+                <div className="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-4">
+                  {/* Logo */}
+                  <div className="text-2xl font-bold tracking-wide cursor-pointer flex items-center gap-2">
+                    <span className="drop-shadow">Gym Scheduler</span>
+                  </div>
 
-                  <button className="flex items-center gap-1 bg-amber-300 hover:bg-amber-400 text-black px-4 py-2 rounded-r-full transition-all font-medium">
-                    🔍
-                    <span className="hidden sm:block">Cerca</span>
-                  </button>
+                  {/* Searchbar */}
+                  <div className="w-full max-w-md order-3 md:order-none">
+                    <div className="flex items-center bg-white border border-gray-200 rounded-full shadow-md focus-within:ring-2 focus-within:ring-green-400 transition">
+                      <input
+                        type="text"
+                        placeholder="Cerca esercizi..."
+                        className="flex-1 px-4 py-2 text-gray-700 bg-transparent outline-none text-sm"
+                      />
+                      <button className="flex items-center gap-1 bg-amber-300 hover:bg-amber-400 text-black px-4 py-2 rounded-r-full transition-all font-medium">
+                        <span className="hidden sm:block">Cerca</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Button */}
+                  <div className="flex-shrink-0">
+                    <button className="px-5 py-2 bg-amber-300 hover:bg-amber-400 text-black border border-gray-300 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-200">
+                      Crea Scheda
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </nav>
 
-              {/* Button */}
-              <div className="flex-shrink-0">
-                <button className="px-5 py-2 bg-amber-300 hover:bg-amber-400 text-black border border-gray-300 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-200">
-                  Crea Scheda
-                </button>
-              </div>
-
+              {/* Children */}
+              {children}
             </div>
-          </nav>
-
-          {children}
+          </div>
         </GlobalProvider>
       </body>
-    </html>
+
+    </html >
   );
 }
