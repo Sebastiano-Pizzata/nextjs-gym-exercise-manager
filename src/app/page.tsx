@@ -9,7 +9,7 @@ export default function Home() {
       <aside
         className="w-full xl:w-1/4 
                p-6 h-fit
-               sticky top-0 z-10">
+              sticky top-0 z-10">
 
         <SelectFilter />
       </aside>

@@ -17,47 +17,49 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <GlobalProvider>
-          {/* Wrapper principale */}
-          <div className="relative min-h-screen w-full overflow-hidden">
-            {/* Sfondo immagine nitida */}
-            <img
-              src="/bg-palestra-2.jpg"
-              alt="Sfondo palestra"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-
+          {/* Wrapper principale con background-image */}
+          <div
+            className="relative min-h-screen w-full bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/bg-palestra-2.jpg')",
+            }}
+          >
             {/* Overlay leggero per leggibilità */}
             <div className="absolute inset-0 bg-black/50"></div>
 
             {/* Contenuto principale */}
             <div className="relative z-10">
-              <nav className="bg-[#64E657]/80 text-gray-900 rounded-2xl w-[90%] mx-auto my-4 px-6 py-3 shadow-lg shadow-green-300/30 transition-all duration-300">
-                <div className="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-4">
+
+              {/* Navbar sticky */}
+              <nav className=" bg-white/10 backdrop-blur-xl text-gray-900 rounded-3xl w-[90%] mx-auto px-8 py-4 shadow-xl shadow-black/10 transition-all duration-300">
+                <div className="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-6">
+
                   {/* Logo */}
-                  <div className="text-2xl font-bold tracking-wide cursor-pointer flex items-center gap-2">
-                    <span className="drop-shadow">Gym Scheduler</span>
+                  <div className="text-2xl md:text-3xl font-extrabold tracking-tight cursor-pointer flex items-center gap-3">
+                    <span className="drop-shadow-lg">Gym Scheduler</span>
                   </div>
 
                   {/* Searchbar */}
                   <div className="w-full max-w-md order-3 md:order-none">
-                    <div className="flex items-center bg-white border border-gray-200 rounded-full shadow-md focus-within:ring-2 focus-within:ring-green-400 transition">
+                    <div className="flex items-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm focus-within:ring-2 focus-within:ring-white/40 transition-all duration-300">
                       <input
                         type="text"
                         placeholder="Cerca esercizi..."
-                        className="flex-1 px-4 py-2 text-gray-700 bg-transparent outline-none text-sm"
+                        className="flex-1 px-5 py-3 text-gray-100 bg-transparent outline-none text-sm placeholder-gray-200 rounded-l-full transition-colors duration-200"
                       />
-                      <button className="flex items-center gap-1 bg-amber-300 hover:bg-amber-400 text-black px-4 py-2 rounded-r-full transition-all font-medium">
-                        <span className="hidden sm:block">Cerca</span>
+                      <button className="flex items-center gap-2 bg-white/30 hover:bg-white/40 text-gray-900 px-5 py-3 rounded-r-full font-semibold transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer">
+                        Cerca
                       </button>
                     </div>
                   </div>
 
                   {/* Button */}
                   <div className="flex-shrink-0">
-                    <button className="px-5 py-2 bg-amber-300 hover:bg-amber-400 text-black border border-gray-300 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-200">
+                    <button className="px-6 py-3 bg-white/30 hover:bg-white/40 text-gray-900 border border-white/30 rounded-2xl text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer">
                       Crea Scheda
                     </button>
                   </div>
+
                 </div>
               </nav>
 
@@ -67,6 +69,8 @@ export default function RootLayout({
           </div>
         </GlobalProvider>
       </body>
+
+
 
     </html >
   );
