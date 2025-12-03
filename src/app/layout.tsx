@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import GlobalProvider from "../context/GlobalProvider";
+import Providers from "./providers";
 
 
 export const metadata: Metadata = {
@@ -16,30 +16,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <GlobalProvider>
-          {/* Wrapper principale con background-image */}
+        <Providers>
           <div
             className="relative min-h-screen w-full bg-cover bg-center"
             style={{
               backgroundImage: "url('/bg-palestra-2.jpg')",
             }}
           >
-            {/* Overlay leggero per leggibilità */}
             <div className="absolute inset-0 bg-black/50"></div>
-
-            {/* Contenuto principale */}
             <div className="relative z-10">
-
-              {/* Navbar sticky */}
               <nav className=" bg-white/10 backdrop-blur-xl text-gray-900 rounded-3xl w-[90%] mx-auto px-8 py-4 shadow-xl shadow-black/10 transition-all duration-300">
                 <div className="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-6">
-
-                  {/* Logo */}
                   <div className="text-2xl md:text-3xl font-extrabold tracking-tight cursor-pointer flex items-center gap-3">
                     <span className="drop-shadow-lg">Gym Scheduler</span>
                   </div>
-
-                  {/* Searchbar */}
                   <div className="w-full max-w-md order-3 md:order-none">
                     <div className="flex items-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm focus-within:ring-2 focus-within:ring-white/40 transition-all duration-300">
                       <input
@@ -52,22 +42,17 @@ export default function RootLayout({
                       </button>
                     </div>
                   </div>
-
-                  {/* Button */}
                   <div className="flex-shrink-0">
                     <button className="px-6 py-3 bg-white/30 hover:bg-white/40 text-gray-900 border border-white/30 rounded-2xl text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer">
                       Crea Scheda
                     </button>
                   </div>
-
                 </div>
               </nav>
-
-              {/* Children */}
               {children}
             </div>
           </div>
-        </GlobalProvider>
+        </Providers>
       </body>
 
 

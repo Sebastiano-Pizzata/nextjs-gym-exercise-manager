@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 import { useEffect } from "react";
 
 export default function ExercisesCards() {
-    const { fetchExercises, exercises } = useGlobalContext();
+    const { fetchExercises, sortAndFilteredEx } = useGlobalContext();
 
     useEffect(() => {
         fetchExercises()
@@ -11,11 +11,11 @@ export default function ExercisesCards() {
 
     return (
         <div className="flex flex-wrap justify-center gap-6 ">
-            {exercises.map((e) => (
+            {sortAndFilteredEx.map((e) => (
                 <div
                     key={e.name}
                     className="w-72 h-70 bg-white rounded-lg shadow-md overflow-hidden flex flex-col
-                    transform transition-transform duration-300 hover:scale-105"
+                    transform transition-transform duration-300 hover:scale-105 cursor-pointer"
                 >
                     <img
                         src={e.image}
