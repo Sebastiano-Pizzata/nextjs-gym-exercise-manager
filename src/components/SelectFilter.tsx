@@ -14,8 +14,11 @@ export default function SelectFilter() {
     if (!isClient) return null;
 
     return (
-        <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-xl mx-auto mb-8 border border-gray-10">
-            <h3 className="text-2xl font-semibold mb-6 text-gray-900 tracking-tight">
+        <div className="
+    bg-zinc-900 rounded-xl shadow-xl p-7 w-full max-w-xl mx-auto mb-10 
+    border border-white/10
+">
+            <h3 className="text-2xl font-semibold mb-6 text-gray-100 tracking-tight">
                 Filtra gli esercizi
             </h3>
 
@@ -23,37 +26,47 @@ export default function SelectFilter() {
 
                 {/* Ordinamento */}
                 <div className="flex flex-col">
-                    <label className="text-gray-700 font-medium mb-1">Ordina per</label>
+                    <label className="text-gray-300 font-medium mb-2">Ordina per</label>
                     <select
                         onChange={e => handleSort(e.target.value)}
-                        className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-700 
-                   focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+                        className="
+                    border border-white/20 rounded-lg px-3 py-2 
+                    bg-zinc-800 text-gray-100 
+                    focus:outline-none focus:ring-2 focus:ring-blue-500/50 
+                    shadow-sm hover:border-white/30 transition-all
+                "
                     >
-                        <option value="">Nessun ordinamento</option>
-                        <option value="title_asc">Dalla A alla Z</option>
-                        <option value="title_desc">Dalla Z alla A</option>
+                        <option className="bg-zinc-800" value="">Nessun ordinamento</option>
+                        <option className="bg-zinc-800" value="title_asc">Dalla A alla Z</option>
+                        <option className="bg-zinc-800" value="title_desc">Dalla Z alla A</option>
                     </select>
                 </div>
 
                 {/* Categoria */}
                 <div className="flex flex-col">
-                    <label className="text-gray-700 font-medium mb-1">Categoria</label>
+                    <label className="text-gray-300 font-medium mb-2">Categoria</label>
                     <select
                         onChange={e => setCategory(e.target.value === "" ? 0 : Number(e.target.value))}
-                        className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-700 
-                   focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+                        className="
+                    border border-white/20 rounded-lg px-3 py-2 
+                    bg-zinc-800 text-gray-100 
+                    focus:outline-none focus:ring-2 focus:ring-blue-500/50 
+                    shadow-sm hover:border-white/30 transition-all
+                "
                     >
-                        <option value="0">Tutte</option>
-                        <option value="1">Petto</option>
-                        <option value="2">Gambe</option>
-                        <option value="3">Schiena</option>
-                        <option value="4">Spalle</option>
-                        <option value="5">Cardio</option>
+                        <option className="bg-zinc-800" value="0">Tutte</option>
+                        <option className="bg-zinc-800" value="1">Petto</option>
+                        <option className="bg-zinc-800" value="2">Gambe</option>
+                        <option className="bg-zinc-800" value="3">Schiena</option>
+                        <option className="bg-zinc-800" value="4">Spalle</option>
+                        <option className="bg-zinc-800" value="5">Cardio</option>
                     </select>
                 </div>
 
             </div>
         </div>
+
+
 
 
     )

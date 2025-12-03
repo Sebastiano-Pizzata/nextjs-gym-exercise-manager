@@ -1,6 +1,8 @@
 "use client"
 import { useGlobalContext } from "../context/GlobalContext";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleArrowLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function ExercisesCarousel() {
     const { fetchExercises, sortAndFilteredEx } = useGlobalContext();
@@ -36,19 +38,46 @@ export default function ExercisesCarousel() {
     }
 
     return (
-        <div>
+        <div className="relative">
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 {currentItems.map((e) => (
                     <div
                         key={e.name}
-                        className="w-full h-70 bg-white rounded-lg shadow-md overflow-hidden flex flex-col
-                        transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+                        className="
+                    w-full h-80 bg-zinc-900 rounded-xl overflow-hidden flex flex-col
+                    border border-white/10 shadow-lg
+                    transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:border-white/20
+                    cursor-pointer
+                "
                     >
-                        <img src={e.image} alt={e.name} className="w-full h-40 object-cover" />
-                        <div className="p-4 flex flex-col flex-grow">
-                            <h3 className="text-xl font-semibold mb-2">{e.name}</h3>
-                            <p className="text-gray-600 line-clamp-4">{e.description}</p>
+                        {/* Fix altezza immagine */}
+                        <div className="w-full h-56 overflow-hidden">
+                            <img
+                                src={e.image}
+                                alt={e.name}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+
+                        <div className="p-5 flex flex-col flex-grow">
+                            <h3 className="text-xl font-semibold text-gray-100 tracking-wide line-clamp-1">
+                                {e.name}
+                            </h3>
+                        </div>
+
+                        <div className="flex justify-center pb-4">
+                            <button
+                                className="
+                            px-6 py-2 rounded-full bg-blue-600 text-white font-medium
+                            transition-all duration-300 
+                            hover:bg-blue-500 hover:shadow-lg hover:scale-105
+                            active:scale-95
+                            cursor-pointer
+                        "
+                            >
+                                Aggiungi
+                            </button>
                         </div>
                     </div>
                 ))}
@@ -56,20 +85,39 @@ export default function ExercisesCarousel() {
 
 
             {totalPages > 1 && (
-                <div className="flex justify-center gap-4 mt-6">
+                <>
+                    {/* Prev */}
                     <button
                         onClick={goPrev}
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition cursor-pointer"
+                        className="
+                         absolute left-0 top-1/2 -translate-y-1/2 
+                         text-white p-4 rounded-full 
+                         shadow-lg shadow-blue-900/40 
+                         hover:bg-white/20 hover:shadow-blue-500/50
+                         transition-all duration-300 
+                         cursor-pointer
+                         hover:scale-110 active:scale-95
+    "
                     >
-                        Prev
+                        <FontAwesomeIcon icon={faCircleArrowLeft} size="2x" />
                     </button>
+
+                    {/* Next */}
                     <button
                         onClick={goNext}
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition cursor-pointer"
+                        className="
+                         absolute right-0 top-1/2 -translate-y-1/2 
+                         text-white p-4 rounded-full 
+                        shadow-lg shadow-blue-900/40 
+                        hover:bg-white/20 hover:shadow-blue-500/50
+                        transition-all duration-300 
+                        cursor-pointer
+                        hover:scale-110 active:scale-95
+    "
                     >
-                        Next
+                        <FontAwesomeIcon icon={faCircleRight} size="2x" />
                     </button>
-                </div>
+                </>
             )}
         </div>
     );
