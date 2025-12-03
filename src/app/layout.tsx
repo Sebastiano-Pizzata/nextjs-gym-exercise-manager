@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
+import Image from "next/image";
 
 
 export const metadata: Metadata = {
@@ -25,10 +26,10 @@ export default function RootLayout({
           >
             <div className="absolute inset-0 bg-black/50"></div>
             <div className="relative z-10">
-              <nav className=" bg-white/10 backdrop-blur-xl text-gray-900 rounded-3xl w-[90%] mx-auto px-8 py-4 shadow-xl shadow-black/10 transition-all duration-300">
+              <nav className=" bg-white/10 backdrop-blur-xl text-gray-900 rounded-3xl w-[90%] mx-auto px-4 py-2 shadow-xl shadow-black/10 transition-all duration-300">
                 <div className="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-6">
-                  <div className="text-2xl md:text-3xl font-extrabold tracking-tight cursor-pointer flex items-center gap-3">
-                    <span className="drop-shadow-lg">Gym Scheduler</span>
+                  <div className="">
+                    <Image src="/gym-logo.svg" width={80} height={80} className="cursor-pointer" alt="Logo"></Image>
                   </div>
                   <div className="w-full max-w-md order-3 md:order-none">
                     <div className="flex items-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm focus-within:ring-2 focus-within:ring-white/40 transition-all duration-300">
