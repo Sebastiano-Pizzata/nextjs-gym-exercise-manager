@@ -36,16 +36,7 @@ export default function RootLayout({
                     <Image src="/gym-logo.svg" width={80} height={80} className="cursor-pointer" alt="Logo"></Image>
                   </div>
                   <div className="w-full max-w-md order-3 md:order-none">
-                    <div className="flex items-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm focus-within:ring-2 focus-within:ring-white/40 transition-all duration-300">
-                      <input
-                        type="text"
-                        placeholder="Cerca esercizi..."
-                        className="flex-1 px-5 py-3 text-gray-100 bg-transparent outline-none text-sm placeholder-gray-200 rounded-l-full transition-colors duration-200"
-                      />
-                      <button className="flex items-center gap-2 bg-white/30 hover:bg-white/40 text-gray-900 px-5 py-3 rounded-r-full font-semibold transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer">
-                        Cerca
-                      </button>
-                    </div>
+                    {/* qua ci va la searchBar completa */}
                   </div>
                   <div className="flex-shrink-0">
                     <button className="px-6 py-3 bg-white/30 hover:bg-white/40 text-gray-900 border border-white/30 rounded-2xl text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer">

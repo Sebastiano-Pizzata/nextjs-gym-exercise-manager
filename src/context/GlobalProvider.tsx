@@ -21,6 +21,9 @@ export type GlobalContextType = {
     handleSort: (value: string) => void;
     setCategory: React.Dispatch<React.SetStateAction<number>>;
     sortAndFilteredEx: Exercise[];
+    search: string;
+    setSearch: React.Dispatch<React.SetStateAction<string>>;
+    searchExercise: Exercise[];
 };
 
 
@@ -39,6 +42,7 @@ const GlobalProvider = ({ children }: GlobalProviderProps) => {
     const [sortBy, setSortBy] = useState("");
     const [sortOrder, setSortOrder] = useState(1);
     const [category, setCategory] = useState(0);
+    const [search, setSearch] = useState("");
 
     const url = process.env.NEXT_PUBLIC_ENDPOINT_URL;
 
@@ -73,7 +77,16 @@ const GlobalProvider = ({ children }: GlobalProviderProps) => {
         if (category) filtered = filtered.filter(ex => ex.category_id === category);
         if (sortBy === 'title') filtered.sort((a, b) => a.name.localeCompare(b.name) * sortOrder)
         return filtered
-    }, [exercises, category, sortBy, sortOrder])
+    }, [exercises, category, sortBy, sortOrder]);
+
+
+    const searchExercise = useMemo(() => {
+        if (!search.trim()) return exercises;
+
+        return exercises.filter(exercise =>
+            exercise.name.toLowerCase().includes(search.toLowerCase())
+        );
+    }, [search, exercises]);
 
 
     const value: GlobalContextType = {
@@ -81,7 +94,10 @@ const GlobalProvider = ({ children }: GlobalProviderProps) => {
         fetchExercises,
         handleSort,
         setCategory,
-        sortAndFilteredEx
+        sortAndFilteredEx,
+        search,
+        setSearch,
+        searchExercise
     };
 
     return (
