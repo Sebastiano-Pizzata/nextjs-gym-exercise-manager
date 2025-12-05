@@ -2,7 +2,7 @@
 import { useGlobalContext } from "../context/GlobalContext";
 import { useState, useEffect } from "react"
 
-export default function SelectFilter() {
+export default function SelectFilter({ start }) {
 
     const { handleSort, setCategory } = useGlobalContext();
     const [isClient, setIsClient] = useState(false)
@@ -14,10 +14,11 @@ export default function SelectFilter() {
     if (!isClient) return null;
 
     return (
-        <div className="
+        <div className={`
     bg-zinc-900 rounded-xl shadow-xl p-7 w-full max-w-xl mx-auto mb-10 
     border border-white/10
-">
+    ${!start ? "opacity-50 cursor-not-allowed" : ""}
+`}>
             <h3 className="text-2xl font-semibold mb-6 text-gray-100 tracking-tight">
                 Filtra gli esercizi
             </h3>
@@ -33,8 +34,9 @@ export default function SelectFilter() {
                     border border-white/20 rounded-lg px-3 py-2 
                     bg-zinc-800 text-gray-100 
                     focus:outline-none focus:ring-2 focus:ring-blue-500/50 
-                    shadow-sm hover:border-white/30 transition-all
-                "
+                    shadow-sm hover:border-white/30 transition-all"
+
+
                     >
                         <option className="bg-zinc-800" value="">Nessun ordinamento</option>
                         <option className="bg-zinc-800" value="title_asc">Dalla A alla Z</option>
