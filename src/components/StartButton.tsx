@@ -1,8 +1,8 @@
 "use client"
 import { useState } from "react";
 
-export default function StartBanner({ onStart }) {
-    const [visible, setVisible] = useState(true);
+export default function StartBanner({ onStart }: { onStart: () => void }) {
+    const [visible, setVisible] = useState<boolean>(true);
 
     const handleClick = () => {
         setVisible(false);

@@ -4,45 +4,57 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
 import StartButton from "./StartButton";
+import type { Exercise, ExercisesCardsProps } from "../context/GlobalProvider";
 
-export default function ExercisesCards({ start, setStart }) {
-    const { fetchExercises, sortAndFilteredEx } = useGlobalContext();
-    const [currentPage, setCurrentPage] = useState(0);
+export default function ExercisesCards({ start, setStart }: ExercisesCardsProps) {
+    const { fetchExercises, sortAndFilteredEx } = useGlobalContext() as {
+        fetchExercises: () => void;
+        sortAndFilteredEx: Exercise[];
+    };
+
+    const [currentPage, setCurrentPage] = useState<number>(0);
+    const [isAnimating, setIsAnimating] = useState<boolean>(false);
+
     const itemsPerPage = 6;
+
 
     useEffect(() => {
         fetchExercises();
-    }, []);
+    }, [fetchExercises]);
 
     useEffect(() => {
         setCurrentPage(0);
     }, [sortAndFilteredEx]);
 
+
     const totalPages = Math.ceil(sortAndFilteredEx.length / itemsPerPage);
+
     const currentItems = sortAndFilteredEx.slice(
         currentPage * itemsPerPage,
         currentPage * itemsPerPage + itemsPerPage
     );
 
-    const [isAnimating, setIsAnimating] = useState(false);
 
     const goNext = () => {
-        if (!start) return;
+        if (!start || totalPages === 0) return;
         setIsAnimating(true);
+
         setTimeout(() => {
-            setCurrentPage(prev => (prev + 1) % totalPages);
+            setCurrentPage((prev) => (prev + 1) % totalPages);
             setIsAnimating(false);
         }, 100);
     };
 
     const goPrev = () => {
-        if (!start) return;
+        if (!start || totalPages === 0) return;
         setIsAnimating(true);
+
         setTimeout(() => {
-            setCurrentPage(prev => (prev - 1 + totalPages) % totalPages);
+            setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
             setIsAnimating(false);
         }, 100);
     };
+
 
     if (sortAndFilteredEx.length === 0) {
         return <p className="text-center text-gray-500 mt-6">Nessun esercizio trovato.</p>;
@@ -50,6 +62,7 @@ export default function ExercisesCards({ start, setStart }) {
 
     return (
         <div className="relative">
+
 
             {!start && (
                 <div className="flex justify-center py-8">
@@ -59,11 +72,13 @@ export default function ExercisesCards({ start, setStart }) {
 
 
             {start && (
-                <div className={`
-                    grid grid-cols-1 sm:grid-cols-3 gap-8
-                    transition-all duration-300 ease-out
-                    ${isAnimating ? "opacity-0 translate-x-5" : "opacity-100 translate-x-0"}
-                `}>
+                <div
+                    className={`
+                        grid grid-cols-1 sm:grid-cols-3 gap-8
+                        transition-all duration-300 ease-out
+                        ${isAnimating ? "opacity-0 translate-x-5" : "opacity-100 translate-x-0"}
+                    `}
+                >
                     {currentItems.map((e) => (
                         <div
                             key={e.name}

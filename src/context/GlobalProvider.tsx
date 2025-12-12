@@ -14,6 +14,11 @@ export type Exercise = {
 }
 
 
+export type ExercisesCardsProps = {
+    start: boolean;
+    setStart: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 
 export type GlobalContextType = {
     exercises: Exercise[];
