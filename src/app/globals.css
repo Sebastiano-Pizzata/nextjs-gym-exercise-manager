@@ -55,3 +55,12 @@
     margin: 0;
     animation: fadeInUp 1s ease-in-out;
 }
+
+
+body,
+html {
+    min-height: 100%;
+    background-image: url('/bg-palestra-2.jpg');
+    background-size: cover;
+    background-position: center;
+}

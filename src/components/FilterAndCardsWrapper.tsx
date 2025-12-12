@@ -5,7 +5,7 @@ import SelectFilter from "./SelectFilter";
 import ExercisesCards from "./ExercisesCards";
 
 export default function FiltersAndCardsWrapper() {
-    const [start, setStart] = useState(false);
+    const [start, setStart] = useState<boolean>(false);
 
     return (
         <>

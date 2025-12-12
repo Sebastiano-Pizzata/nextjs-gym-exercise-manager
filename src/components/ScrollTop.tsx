@@ -1,13 +1,19 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ScrollTop() {
     const pathname = usePathname();
+    const [mounted, setMounted] = useState<boolean>(false);
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }, [pathname]);
+        setMounted(true);
+    }, []);
 
-    return null
+    useEffect(() => {
+        if (!mounted || !pathname) return;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [mounted, pathname]);
+
+    return null;
 }

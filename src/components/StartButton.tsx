@@ -31,12 +31,6 @@ export default function StartBanner({ onStart }: { onStart: () => void }) {
 
                 {/* Contenuto */}
                 <div className="relative z-10">
-                    <h1 className="
-                        text-4xl font-bold text-white mb-4
-                        animate-fadeIn
-                    ">
-                        Benvenuto!
-                    </h1>
 
                     <p className="
                         text-lg text-gray-300 mb-10

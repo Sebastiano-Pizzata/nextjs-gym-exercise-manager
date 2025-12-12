@@ -15,7 +15,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
     const [currentPage, setCurrentPage] = useState<number>(0);
     const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
-    const itemsPerPage = 6;
+    const itemsPerPage: number = 6;
 
 
     useEffect(() => {
@@ -27,9 +27,9 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
     }, [sortAndFilteredEx]);
 
 
-    const totalPages = Math.ceil(sortAndFilteredEx.length / itemsPerPage);
+    const totalPages: number = Math.ceil(sortAndFilteredEx.length / itemsPerPage);
 
-    const currentItems = sortAndFilteredEx.slice(
+    const currentItems: Exercise[] = sortAndFilteredEx.slice(
         currentPage * itemsPerPage,
         currentPage * itemsPerPage + itemsPerPage
     );
