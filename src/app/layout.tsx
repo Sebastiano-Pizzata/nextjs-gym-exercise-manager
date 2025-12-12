@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 import Image from "next/image";
+import ScrollTop from "../components/ScrollTop";
 
 
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
+          <ScrollTop />
           <div
             className="relative min-h-screen w-full bg-cover bg-center"
             style={{
