@@ -1,6 +1,5 @@
-import ExercisesCards from "../components/ExercisesCards"
-import FilterAndCardsWrapper from "../components/FilterAndCardsWrapper"
-import SelectFilter from "../components/SelectFilter"
+import FilterAndCardsWrapper from "../components/FilterAndCardsWrapper";
+
 
 export default function Home() {
   return (

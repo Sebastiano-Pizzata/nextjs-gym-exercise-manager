@@ -15,10 +15,10 @@ export default function SelectFilter({ start }) {
 
     return (
         <div className={`
-    bg-zinc-900 rounded-xl shadow-xl p-7 w-full max-w-xl mx-auto mb-10 
-    border border-white/10
-    ${!start ? "opacity-50 cursor-not-allowed" : ""}
-`}>
+                     bg-zinc-900 rounded-xl shadow-xl p-7 w-full max-w-xl mx-auto mb-10 
+                     border border-white/10
+                     ${!start ? "opacity-50 cursor-not-allowed" : ""}
+                       `}>
             <h3 className="text-2xl font-semibold mb-6 text-gray-100 tracking-tight">
                 Filtra gli esercizi
             </h3>
