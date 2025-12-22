@@ -1,7 +1,7 @@
-import FilterAndCardsWrapper from "../components/FilterAndCardsWrapper";
+import FilterAndCardsWrapper from "../../components/FilterAndCardsWrapper";
 
 
-export default function Home() {
+export default function Homepage() {
   return (
     <>
       <div className="banner-container">
