@@ -53,12 +53,17 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
     };
 
 
-    const [selectedDay, setSelectedDay] = useState<DayOfWeek>();
+    const [selectedDays, setSelectedDays] = useState<{ [key: string]: DayOfWeek | "" }>({});
 
-    const handleAdd = (exName: string) => {
-        if (selectedDay) {
-            addToSchedule(selectedDay, exName);
-            setSelectedDay(null);
+    const handleSelectDay = (exName: string, day: DayOfWeek) => {
+        setSelectedDays(prev => ({ ...prev, [exName]: day }));
+    };
+
+    const handleAdd = (exerciseName: string) => {
+        const day = selectedDays[exerciseName];
+        if (day) {
+            addToSchedule(day, exerciseName);
+            setSelectedDays(prev => ({ ...prev, [exerciseName]: "" }));
         }
     };
 
@@ -111,8 +116,13 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
 
                             <div className="flex justify-center pb-4 gap-2">
                                 <select
-                                    value={selectedDay || ""}
-                                    onChange={(e) => setSelectedDay(e.target.value as DayOfWeek)}
+                                    value={selectedDays[e.name] || ""}
+                                    onChange={(event) => {
+                                        const value = event.target.value;
+                                        if (daysOfWeek.includes(value as DayOfWeek)) {
+                                            handleSelectDay(e.name, value as DayOfWeek);
+                                        }
+                                    }}
                                     className="border border-white/20 rounded-lg px-3 py-2 
                                                bg-zinc-800 text-gray-100 
                                                focus:outline-none focus:ring-2 focus:ring-blue-500/50 
