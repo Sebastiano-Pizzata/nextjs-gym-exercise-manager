@@ -4,13 +4,10 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
 import StartButton from "./StartButton";
-import type { Exercise, ExercisesCardsProps } from "../context/GlobalProvider";
+import { daysOfWeek, type DayOfWeek, type Exercise, type ExercisesCardsProps } from "../context/GlobalProvider";
 
 export default function ExercisesCards({ start, setStart }: ExercisesCardsProps) {
-    const { fetchExercises, sortAndFilteredEx } = useGlobalContext() as {
-        fetchExercises: () => void;
-        sortAndFilteredEx: Exercise[];
-    };
+    const { fetchExercises, sortAndFilteredEx, addToSchedule } = useGlobalContext();
 
     const [currentPage, setCurrentPage] = useState<number>(0);
     const [isAnimating, setIsAnimating] = useState<boolean>(false);
@@ -55,6 +52,15 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
         }, 100);
     };
 
+
+    const [selectedDay, setSelectedDay] = useState<DayOfWeek>();
+
+    const handleAdd = (exName: string) => {
+        if (selectedDay) {
+            addToSchedule(selectedDay, exName);
+            setSelectedDay(null);
+        }
+    };
 
     if (sortAndFilteredEx.length === 0) {
         return <p className="text-center text-gray-500 mt-6">Nessun esercizio trovato.</p>;
@@ -103,7 +109,20 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                 </h3>
                             </div>
 
-                            <div className="flex justify-center pb-4">
+                            <div className="flex justify-center pb-4 gap-2">
+                                <select
+                                    value={selectedDay || ""}
+                                    onChange={(e) => setSelectedDay(e.target.value as DayOfWeek)}
+                                    className="border border-white/20 rounded-lg px-3 py-2 
+                                               bg-zinc-800 text-gray-100 
+                                               focus:outline-none focus:ring-2 focus:ring-blue-500/50 
+                                               shadow-sm hover:border-white/30 transition-all"
+                                >
+                                    <option value="">Seleziona giorno</option>
+                                    {daysOfWeek.map(day => (
+                                        <option key={day} value={day} className="bg-zinc-800">{day}</option>
+                                    ))}
+                                </select>
                                 <button
                                     className="
                                         px-6 py-2 rounded-full bg-blue-600 text-white font-medium
@@ -111,6 +130,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                         hover:bg-blue-500 hover:shadow-lg hover:scale-105
                                         active:scale-95 cursor-pointer
                                     "
+                                    onClick={() => handleAdd(e.name)}
                                 >
                                     Aggiungi
                                 </button>
