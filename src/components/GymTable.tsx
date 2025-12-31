@@ -6,7 +6,7 @@ export default function GymTable() {
     const { gymSchedule, removeFromSchedule } = useGlobalContext();
 
     return (
-        <div className="p-4 bg-zinc-900 rounded-xl shadow-lg border border-white/10">
+        <div className="p-4 bg-zinc-900 rounded-xl shadow-lg border border-white/10 w-[80%] mx-auto px-4">
             <h2 className="text-2xl font-semibold mb-4 text-gray-100">Gym Weekly Schedule</h2>
 
             <div className="overflow-x-auto">
