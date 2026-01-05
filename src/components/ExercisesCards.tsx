@@ -82,7 +82,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
             )}
 
             {start && (
-                <div className="flex items-center justify-between gap-4 mt-8">
+                <div className="flex items-center justify-between gap-4 ">
                     {/* PULSANTE PREV */}
                     {totalPages > 1 && (
                         <button
