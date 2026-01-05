@@ -114,7 +114,11 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                 </h3>
                             </div>
 
-                            <div className="flex justify-center pb-4 gap-2">
+                            <div className=" flex flex-col xl:flex-row
+                                            w-full
+                                            px-3 sm:px-4
+                                            pb-4
+                                            gap-2 sm:gap-3">
                                 <select
                                     value={selectedDays[e.name] || ""}
                                     onChange={(event) => {
@@ -123,10 +127,15 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                             handleSelectDay(e.name, value as DayOfWeek);
                                         }
                                     }}
-                                    className="border border-white/20 rounded-lg px-3 py-2 
-                                               bg-zinc-800 text-gray-100 
-                                               focus:outline-none focus:ring-2 focus:ring-blue-500/50 
-                                               shadow-sm hover:border-white/30 transition-all"
+                                    className="w-full
+                                            min-w-0
+                                            text-sm sm:text-base
+                                            border border-white/20 rounded-lg
+                                            px-2 sm:px-3 py-2
+                                            bg-zinc-800 text-gray-100
+                                            focus:outline-none focus:ring-2 focus:ring-blue-500/50
+                                            hover:border-white/30
+                                            transition-all                                     "
                                 >
                                     <option value="">Seleziona giorno</option>
                                     {daysOfWeek.map(day => (
@@ -135,10 +144,15 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                 </select>
                                 <button
                                     className="
-                                        px-6 py-2 rounded-full bg-blue-600 text-white font-medium
-                                        transition-all duration-300 
-                                        hover:bg-blue-500 hover:shadow-lg hover:scale-105
-                                        active:scale-95 cursor-pointer
+                                          w-full
+                                            min-w-0
+                                            text-sm sm:text-base
+                                            px-4 sm:px-6 py-2
+                                            rounded-full
+                                            bg-blue-600 text-white font-medium
+                                            transition-all duration-300
+                                            hover:bg-blue-500 hover:shadow-lg
+                                            active:scale-95                                
                                     "
                                     onClick={() => handleAdd(e.name)}
                                 >
