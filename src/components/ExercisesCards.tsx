@@ -96,7 +96,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                 flex-shrink-0
                             "
                         >
-                            <FontAwesomeIcon icon={faCircleArrowLeft} size="2x" />
+                            <FontAwesomeIcon icon={faCircleArrowLeft} size="3x" />
                         </button>
                     )}
 
@@ -182,7 +182,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                 flex-shrink-0
                             "
                         >
-                            <FontAwesomeIcon icon={faCircleArrowRight} size="2x" />
+                            <FontAwesomeIcon icon={faCircleArrowRight} size="3x" />
                         </button>
                     )}
                 </div>

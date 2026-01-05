@@ -25,12 +25,16 @@ export default function Navbar() {
                 <div className="w-full max-w-md order-3 md:order-none">
                     {/* Inserisci qui la SearchBar */}
                 </div>
-                <div className="flex-shrink-0">
+                <div className="flex flex-col xl:flex-row px-3 pb-4 gap-2">
                     <Link
                         href="/schedule"
                         className="inline-flex px-6 py-3 bg-white/30 hover:bg-white/40 text-gray-900 border border-white/30 rounded-2xl text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-300"
                     >
                         {totalExercises > 0 ? "Modifica la tua Scheda" : "Crea la tua Scheda"}
+                    </Link>
+                    <Link href={'/login'}
+                        className="inline-flex px-6 py-3 bg-white/30 hover:bg-white/40 text-gray-900 border border-white/30 rounded-2xl text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-300">
+                        Login
                     </Link>
                 </div>
             </div>
