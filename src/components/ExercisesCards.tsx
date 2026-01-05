@@ -128,7 +128,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                     </div>
 
                                     <div className="p-5 flex flex-col flex-grow">
-                                        <h3 className="text-xl font-semibold text-gray-100 line-clamp-1">
+                                        <h3 className="text-xl font-semibold text-gray-100 line-clamp-1 title-font">
                                             {e.name}
                                         </h3>
                                     </div>

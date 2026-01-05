@@ -64,3 +64,10 @@ html {
     background-size: cover;
     background-position: center;
 }
+
+
+
+.title-font {
+    font-family: Roboto;
+    font-weight: 1000;
+}

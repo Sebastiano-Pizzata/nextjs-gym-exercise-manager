@@ -19,7 +19,7 @@ export default function SelectFilter({ start }) {
                      border border-white/10
                      ${!start ? "opacity-50 cursor-not-allowed" : ""}
                        `}>
-            <h3 className="text-2xl font-semibold mb-6 text-gray-100 tracking-tight">
+            <h3 className="text-2xl font-semibold mb-6 text-gray-100 tracking-tight title-font">
                 Filtra gli esercizi
             </h3>
 
