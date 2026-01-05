@@ -127,6 +127,10 @@ const GlobalProvider = ({ children }: GlobalProviderProps) => {
         }
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem("gymScheduler", JSON.stringify(gymSchedule));
+    }, [gymSchedule]);
+
     const addToSchedule = (day: DayOfWeek, exName: string) => {
         setGymSchedule(prev => ({
             ...prev,
