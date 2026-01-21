@@ -31,6 +31,7 @@ export type GymSchedule = {
 
 export type GlobalContextType = {
     exercises: Exercise[];
+    singleEx: Exercise | null;
     fetchExercises: () => Promise<void>;
     fetchSingleEx: (id: number) => Promise<void>;
     handleSort: (value: string) => void;
@@ -76,7 +77,8 @@ const GlobalProvider = ({ children }: GlobalProviderProps) => {
             const response = await fetch(`http://localhost:2000/exercise/${id}`);
             console.log("Status:", response.status);
             const data = await response.json();
-            setSingleEx(data);
+            console.log("Risultato fetchSingleEx:", data);
+            setSingleEx(data.exercise);
         } catch (error) {
             console.error("Errore nel fetch del singolo esercizio:", error);
         }
@@ -147,6 +149,7 @@ const GlobalProvider = ({ children }: GlobalProviderProps) => {
 
     const value: GlobalContextType = {
         exercises,
+        singleEx,
         fetchExercises,
         fetchSingleEx,
         handleSort,
@@ -158,6 +161,7 @@ const GlobalProvider = ({ children }: GlobalProviderProps) => {
         gymSchedule,
         addToSchedule,
         removeFromSchedule
+
     };
 
     return (

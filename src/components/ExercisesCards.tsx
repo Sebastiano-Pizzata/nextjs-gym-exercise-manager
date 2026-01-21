@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft, faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import StartButton from "./StartButton";
+import Link from "next/link";
+
 import {
     daysOfWeek,
     type DayOfWeek,
     type Exercise,
     type ExercisesCardsProps
 } from "../context/GlobalProvider";
+import { link } from "fs";
 
 export default function ExercisesCards({ start, setStart }: ExercisesCardsProps) {
     const { fetchExercises, sortAndFilteredEx, addToSchedule } = useGlobalContext();
@@ -102,6 +105,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
 
                     {/* GRID CARDS */}
                     <div className="flex-1">
+
                         <div
                             className={`
                                 grid grid-cols-1 sm:grid-cols-3 gap-8
@@ -110,6 +114,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                             `}
                         >
                             {currentItems.map((e) => (
+
                                 <div
                                     key={e.name}
                                     className="
@@ -119,19 +124,21 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                         hover:shadow-2xl hover:border-white/20
                                     "
                                 >
-                                    <div className="w-full h-56 overflow-hidden">
-                                        <img
-                                            src={e.image}
-                                            alt={e.name}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
+                                    <Link href={`/homepage/${e.id}`} >
+                                        <div className="w-full h-50 overflow-hidden">
+                                            <img
+                                                src={e.image}
+                                                alt={e.name}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
 
-                                    <div className="p-5 flex flex-col flex-grow">
-                                        <h3 className="text-xl font-semibold text-gray-100 line-clamp-1 title-font">
-                                            {e.name}
-                                        </h3>
-                                    </div>
+                                        <div className="p-5 flex flex-col flex-grow">
+                                            <h3 className="text-xl font-semibold text-gray-100 line-clamp-1 title-font">
+                                                {e.name}
+                                            </h3>
+                                        </div>
+                                    </Link>
 
                                     <div className="flex flex-col xl:flex-row px-3 pb-4 gap-2">
                                         <select
@@ -167,6 +174,7 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                                 </div>
                             ))}
                         </div>
+
                     </div>
 
                     {/* PULSANTE NEXT */}
@@ -186,7 +194,8 @@ export default function ExercisesCards({ start, setStart }: ExercisesCardsProps)
                         </button>
                     )}
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }
